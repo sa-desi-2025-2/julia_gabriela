@@ -18,6 +18,7 @@ class Conexao extends PDO
         try {
             parent::__construct($dsn, $this->usuario, $this->senha);
             $this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            exit("SUCESSO!");
         } catch (PDOException $erro) {
             die("ERRO NA CONEXÃO: " . $erro->getMessage());
         }
