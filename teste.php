@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form method="post" action="/app/gateway.html">
+    <form method="post" action="app/gateway.php?acao=conectar">
         <input type="submit" value="CONECTAR">
     </form>
 </body>

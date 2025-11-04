@@ -4,6 +4,7 @@ session_start();
 
 $conexao = new Conexao();
 
+// usuário já logado, vai direto pro painel
 if (isset($_SESSION['id_usuario'])) {
     header("Location: painel.php");
     exit;
@@ -19,21 +20,24 @@ $mensagem = "Bem vindo!";
   <title>Gerenciador de Senhas - Login</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Link para o CSS externo -->
+  
   <link rel="stylesheet" href="Telainicial.css">
 </head>
 <body>
 
-  <div class="logo text-center">🔐SenhaLock</div>
+  <div class="logo text-center">🔒 SenhaLock</div>
 
   <div class="card-login">
       <?php if ($mensagem): ?>
           <div class="alert alert-info text-center"><?= $mensagem ?></div>
       <?php endif; ?>
 
-      <h5 class="mb-3">Entrar</h5>
+      <h5 class="mb-3">Cadastrar</h5>
 
       <form method="post" action="app/gateway.php?acao=login">
+      <div class="mb-3">
+              <input type="nome" name="nome" class="form-control" placeholder="Nome" required>
+          </div>
           <div class="mb-3">
               <input type="email" name="email" class="form-control" placeholder="E-mail" required>
           </div>
