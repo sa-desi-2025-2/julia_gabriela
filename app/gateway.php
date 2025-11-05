@@ -31,15 +31,20 @@
             $email = $_POST['email'] ?? '';
             $senha = $_POST['senha'] ?? '';
             
+            $usuario = new Usuario();
+
             if (!empty($email) && !empty($senha)) {
-                $usuario = new Usuario();
                 $usuario->setEmail($email);
                 $usuario->setSenha($senha);
             }
             if ($usuario->login()) {
+                header("Location: ../pages/painel.php");
+            }else {
+                session_start();
+                $_SESSION['erro_login'] = "E-mail ou senha incorretos!";
                 header("Location: ../index.php");
-                echo "caiu";
+                exit;
+            }
         }
     }
-}
 ?>

@@ -93,6 +93,7 @@ class Usuario {
             session_start();
             $_SESSION['id_usuario'] = $usuario['id_usuario'];
             $_SESSION['nome'] = $usuario['nome'];
+            $_SESSION['email'] = $usuario['email'];
             return true;
         } else {
             return false;

@@ -18,8 +18,7 @@ $mensagem = "Bem vindo!";
   <meta charset="utf-8">
   <title>Gerenciador de Senhas - Login</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Link para o CSS externo -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">    
   <link rel="stylesheet" href="Telainicial.css">
 </head>
 <body>
@@ -27,9 +26,16 @@ $mensagem = "Bem vindo!";
   <div class="logo text-center">🔐SenhaLock</div>
 
   <div class="card-login">
-      <?php if ($mensagem): ?>
+      <?php if ($mensagem) { ?>
           <div class="alert alert-info text-center"><?= $mensagem ?></div>
-      <?php endif; ?>
+      <?php } ?>
+
+    <?php if (isset($_SESSION['erro_login'])) { ?>
+        <div class="alert alert-danger text-center">
+            <?= $_SESSION['erro_login']; ?>
+        </div>
+        <?php unset($_SESSION['erro_login']); ?>
+    <?php } ?>
 
       <h5 class="mb-3">Entrar</h5>
 
@@ -49,6 +55,5 @@ $mensagem = "Bem vindo!";
   <p class="text-center mt-3 text-white small">
       Feito por <b>Gabriela Paludo</b> e <b>Júlia Steffen</b>
   </p>
-
 </body>
 </html>

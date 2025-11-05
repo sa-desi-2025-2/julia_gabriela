@@ -8,7 +8,7 @@ class Conexao extends PDO
 
     public function __construct()
     {
-        $this->nome = 'GerenciadorSenhas';
+        $this->nome = 'gerenciadorsenhas';
         $this->usuario = 'root';
         $this->senha = '';
         $this->servidor = 'localhost';
