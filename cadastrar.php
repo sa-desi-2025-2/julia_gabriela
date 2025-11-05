@@ -34,7 +34,7 @@ $mensagem = "Bem vindo!";
 
       <h5 class="mb-3">Cadastrar</h5>
 
-      <form method="post" action="app/gateway.php?acao=login">
+      <form method="post" action="app/gateway.php?acao=cadastrar">
       <div class="mb-3">
               <input type="nome" name="nome" class="form-control" placeholder="Nome" required>
           </div>
