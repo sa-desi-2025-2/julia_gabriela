@@ -56,7 +56,6 @@ $total_cofres = $stmt->fetch()['total_cofres'] ?? 0;
 <body>
 
 <div class="dashboard">
-    <!-- MENU LATERAL -->
     <aside class="sidebar">
         <div class="logo">🔐SenhaLock</div>
         <nav class="menu">
@@ -64,12 +63,11 @@ $total_cofres = $stmt->fetch()['total_cofres'] ?? 0;
             <a href="#">Gerador de senhas</a>
             <a href="#">Cofre</a>
             <a href="#">Perfil</a>
-            <a href="#">Organizações</a>
+            <a href="app/gateway.php?acao=organização">>Organizações</a>
             <a href="sair.php" class="logout">Logout</a>
         </nav>
     </aside>
 
-    <!-- CONTEÚDO PRINCIPAL -->
     <main class="content">
         <h2>Bem-vinda, <?= htmlspecialchars($_SESSION['nome']) ?></h2>
         <p class="text-muted">Você está conectada como <?= htmlspecialchars($_SESSION['email']) ?></p>
