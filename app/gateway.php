@@ -5,7 +5,6 @@
     require_once __DIR__ . '/Classes/Subordinado.php';
 
     $acao = $_GET['acao'];
-    
 
     if($acao == 'conexao'){
         $conexao = new Conexao();
@@ -50,45 +49,27 @@
         }
     }
 
-    if ($acao == 'organizacao') {
-        $org = new Organizacao();
-    
-        // cadastrar organização
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nome_organizacao'])) {
-            $nome = trim($_POST['nome_organizacao']);
-            $id_usuario = $_SESSION['id_usuario'];
-    
-            if (!empty($nome)) {
-                if ($org->cadastrar($nome, $id_usuario)) {
-                    $_SESSION['msg_sucesso'] = "Organização <strong>$nome</strong> Criada com sucesso!";
-                } else {
-                    $_SESSION['msg_erro'] = "Erro ao criar a organização.";
-                }
-            } else {
-                $_SESSION['msg_erro'] = "O nome da organização não pode estar vazio.";
-            }
-    
-            header("Location: ../Pages/Painel.php");
-            exit;
-        }
-    }
-
-    if ($acao == 'subordinado') {
-        $sub = new Subordinado();
-    
-        // cadastra subordinado
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_organizacao'], $_POST['id_usuario'])) {
-            $id_organizacao = (int)$_POST['id_organizacao'];
-            $id_usuario = (int)$_POST['id_usuario'];
-    
-            if ($sub->cadastrar($id_usuario, $id_organizacao)) {
-                $_SESSION['msg_sucesso'] = "Subordinado adicionado com sucesso!";
-            } else {
-                $_SESSION['msg_erro'] = "Erro ao adicionar subordinado.";
-            }
-    
+    if ($acao == 'organizacao') { 
             header("Location: ../Pages/OrganizacaoPainel.php");
             exit;
-        }
     }
+
+    // if ($acao == 'subordinado') {
+    //     $sub = new Subordinado();
+    
+    //     // cadastra subordinado
+    //     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_organizacao'], $_POST['id_usuario'])) {
+    //         $id_organizacao = (int)$_POST['id_organizacao'];
+    //         $id_usuario = (int)$_POST['id_usuario'];
+    
+    //         if ($sub->cadastrar($id_usuario, $id_organizacao)) {
+    //             $_SESSION['msg_sucesso'] = "Subordinado adicionado com sucesso!";
+    //         } else {
+    //             $_SESSION['msg_erro'] = "Erro ao adicionar subordinado.";
+    //         }
+    
+    //         header("Location: ../Pages/OrganizacaoPainel.php");
+    //         exit;
+    //     }
+    // }
 ?>
