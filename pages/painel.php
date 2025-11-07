@@ -51,7 +51,7 @@ $total_cofres = $stmt->fetch()['total_cofres'] ?? 0;
   <title>Painel - SenhaLock</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="../Painel.css">
+  <link rel="stylesheet" href="../Pages/css/Painel.css">
 </head>
 <body>
 
@@ -63,7 +63,7 @@ $total_cofres = $stmt->fetch()['total_cofres'] ?? 0;
             <a href="#">Gerador de senhas</a>
             <a href="#">Cofre</a>
             <a href="#">Perfil</a>
-            <a href="app/gateway.php?acao=organização">>Organizações</a>
+            <a href="../App/gateway.php?acao=organizacao">Organizações</a>
             <a href="sair.php" class="logout">Logout</a>
         </nav>
     </aside>
