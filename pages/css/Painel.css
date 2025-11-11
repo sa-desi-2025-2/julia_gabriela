@@ -10,7 +10,6 @@ body {
     height: 100vh;
 }
 
-/* SIDEBAR */
 .sidebar {
     width: 250px;
     background-color: #6A0DAD;
@@ -46,7 +45,7 @@ body {
     color: #ffcccc !important;
 }
 
-/* CONTEÚDO PRINCIPAL */
+
 .content {
     flex: 1;
     padding: 50px;
@@ -72,7 +71,7 @@ body {
     text-decoration: underline;
 }
 
-/* CARDS */
+
 .cards {
     display: flex;
     flex-wrap: wrap;
@@ -87,7 +86,7 @@ body {
     border: 1px solid #e5e5e5;
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
 }
 
 .card-box h5 {
