@@ -5,6 +5,7 @@ body {
     margin: 0;
 }
 
+/* SIDEBAR */
 .sidebar {
     width: 230px;
     background: linear-gradient(180deg, #6A0DAD 0%, #4b0082 100%);
@@ -34,6 +35,7 @@ body {
     color: #fff;
 }
 
+/* CONTEÚDO */
 .conteudo {
     background-color: #fff;
     border-top-left-radius: 15px;
@@ -54,6 +56,7 @@ body {
     background-color: #580a94 !important;
 }
 
+/* CARD ORGANIZAÇÃO */
 .card-org {
     border-radius: 12px;
     background-color: #fff;

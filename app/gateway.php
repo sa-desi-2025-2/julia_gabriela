@@ -2,6 +2,7 @@
     require_once __DIR__ . '/Classes/Conexao.php';
     require_once __DIR__ . '/Classes/Usuario.php';
     require_once __DIR__ . '/Classes/Organizacao.php';
+    require_once __DIR__ . '/Classes/Convite.php';
     require_once __DIR__ . '/Classes/Subordinado.php';
 
     $acao = $_GET['acao'];
@@ -53,6 +54,13 @@
             header("Location: ../Pages/OrganizacaoPainel.php");
             exit;
     }
+
+    if ($acao == 'convite') {
+        require_once __DIR__ . '/Classes/Convite.php';
+        $convite = new Convite();
+        $convite->enviarConvite($_SESSION['id_usuario']);
+    }
+    
 
     // if ($acao == 'subordinado') {
     //     $sub = new Subordinado();

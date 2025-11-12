@@ -83,7 +83,7 @@ FROM Subordinado s
 JOIN Usuario u ON s.id_usuario = u.id_usuario
 JOIN Organizacao o ON s.id_organizacao = o.id_organizacao;
 
--- CONSULTA 7: Contar quantos subordinados cada organização possui
+-- CONSULTA 3: Contar quantos subordinados cada organização possui
 SELECT 
     o.nome AS organizacao,
     COUNT(s.id_subordinado) AS total_subordinados
