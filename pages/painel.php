@@ -41,7 +41,6 @@ $stmt = $conn->prepare("
 ");
 $stmt->execute([$_SESSION['id_usuario']]);
 $total_cofres = $stmt->fetch()['total_cofres'] ?? 0;
-
 ?>
 
 <!doctype html>
@@ -50,46 +49,70 @@ $total_cofres = $stmt->fetch()['total_cofres'] ?? 0;
   <meta charset="utf-8">
   <title>Painel - SenhaLock</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Estilo personalizado -->
   <link rel="stylesheet" href="../Pages/css/Painel.css">
 </head>
 <body>
 
-<div class="dashboard">
-    <aside class="sidebar">
-        <div class="logo">🔐SenhaLock</div>
-        <nav class="menu">
-            <a href="#" class="active">Menu principal</a>
-            <a href="#">Gerador de senhas</a>
-            <a href="#">Cofre</a>
-            <a href="#">Perfil</a>
-            <a href="../App/gateway.php?acao=organizacao">Organizações</a>
-            <a href="sair.php" class="logout">Logout</a>
+<div class="d-flex min-vh-100">
+    <!-- Sidebar -->
+    <aside class="sidebar d-flex flex-column p-4 text-white">
+        <div class="logo mb-4">
+            🔐 <span class="fw-bold">SenhaLock</span>
+        </div>
+        <nav class="menu nav flex-column">
+            <a href="#" class="nav-link active">Menu principal</a>
+            <a href="#" class="nav-link">Gerador de senhas</a>
+            <a href="#" class="nav-link">Cofre</a>
+            <a href="#" class="nav-link">Perfil</a>
+            <a href="../App/gateway.php?acao=organizacao" class="nav-link">Organizações</a>
+            <a href="sair.php" class="nav-link text-danger mt-auto">Logout</a>
         </nav>
     </aside>
 
-    <main class="content">
-        <h2>Bem-vinda, <?= htmlspecialchars($_SESSION['nome']) ?></h2>
-        <p class="text-muted">Você está conectada como <?= htmlspecialchars($_SESSION['email']) ?></p>
-        <a href="#" class="editar-perfil">Editar perfil</a>
+    <!-- Conteúdo -->
+    <main class="content flex-grow-1 p-5 bg-light overflow-auto">
+        <h2 class="fw-semibold mb-2">Bem-vinda, <?= htmlspecialchars($_SESSION['nome']) ?></h2>
+        <p class="text-muted mb-1">Você está conectada como <?= htmlspecialchars($_SESSION['email']) ?></p>
+        <a href="#" class="editar-perfil d-inline-flex align-items-center mb-4">
+            <i class="bi bi-pencil me-1"></i> Editar perfil
+        </a>
 
-        <div class="cards">
-            <div class="card-box">
-                <h5>Resumo do cofre</h5>
-                <p><?= $total_senhas ?> senhas salvas</p>
-                <p><?= $total_pastas ?> pastas criadas</p>
+        <div class="row g-4">
+            <!-- Card 1 -->
+            <div class="col-md-6">
+                <div class="card shadow-sm border-0">
+                    <div class="card-body">
+                        <h5 class="card-title fw-semibold">Resumo do Cofre</h5>
+                        <p class="card-text mb-1"><i class="bi bi-key me-1 text-primary"></i><?= $total_senhas ?> senhas salvas</p>
+                        <p class="card-text"><i class="bi bi-folder me-1 text-primary"></i><?= $total_pastas ?> pastas criadas</p>
+                    </div>
+                </div>
             </div>
 
-            <div class="card-box">
-                <h5>Dicas de segurança</h5>
-                <ul>
-                    <li>Use senhas com pelo menos 12 caracteres</li>
-                    <li>Evite repetir senhas entre sites diferentes</li>
-                </ul>
+            <!-- Card 2 -->
+            <div class="col-md-6">
+                <div class="card shadow-sm border-0">
+                    <div class="card-body">
+                        <h5 class="card-title fw-semibold">Dicas de segurança</h5>
+                        <ul class="mb-0 ps-3">
+                            <li>Use senhas com pelo menos 12 caracteres</li>
+                            <li>Evite repetir senhas entre sites diferentes</li>
+                            <li>Altere suas senhas periodicamente</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
 </div>
 
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
