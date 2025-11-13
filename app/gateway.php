@@ -80,4 +80,31 @@
     //         exit;
     //     }
     // }
+
+    if (!isset($_SESSION['id_usuario'])) {
+        header("Location: ../Pages/login.php");
+        exit;
+    }
+    
+    $acao = $_GET['acao'] ?? null;
+    $usuario = new Usuario();
+    $id = $_SESSION['id_usuario'];
+    
+    if ($acao === 'atualizarPerfil' || isset($_POST['acao'])) {
+        $subacao = $_POST['acao'];
+        $nome = $_POST['nome'];
+        $email = $_POST['email'];
+        $senha = $_POST['senha'];
+    
+        if ($subacao === 'alterar') {
+            $usuario->atualizar($id, $nome, $email, $senha ?: null);
+            header("Location: ../Pages/Perfil.php?msg=alterado");
+            exit;
+        } elseif ($subacao === 'excluir') {
+            $usuario->excluir($id);
+            session_destroy();
+            header("Location: ../index.php?msg=conta_excluida");
+            exit;
+        }
+    }
 ?>
