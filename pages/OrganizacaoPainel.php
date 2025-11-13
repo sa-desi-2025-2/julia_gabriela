@@ -32,7 +32,7 @@ if (!isset($_SESSION['id_usuario'])) {
             <a href="#" class="nav-link active">Menu principal</a>
             <a href="#" class="nav-link">Gerador de senhas</a>
             <a href="#" class="nav-link">Cofre</a>
-            <a href="#" class="nav-link">Perfil</a>
+            <a href="../App/gateway.php?acao=atualizarPerfil" class="nav-link">Perfil</a>
             <a href="../App/gateway.php?acao=organizacao" class="nav-link">Organizações</a>
             <a href="sair.php" class="nav-link text-danger mt-auto">Logout</a>
         </nav>
