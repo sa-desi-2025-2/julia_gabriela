@@ -53,10 +53,24 @@
         }
     }
 
+    if ($acao == 'geradorPainel') { 
+        header("Location: ../Pages/GeradorPainel.php");
+        exit;
+    }
+
+    if ($acao === 'gerarSenha') {
+        $tamanho = $_GET['tamanho'] ?? 8;
+        $caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+';
+        $senha = substr(str_shuffle(str_repeat($caracteres, $tamanho)), 0, $tamanho);
+        echo json_encode(['senha' => $senha]);
+        exit;
+      }
+      
+
     if ($acao == 'perfil') { 
         header("Location: ../Pages/Perfil.php");
         exit;
-}
+    }
 
 if ($acao === 'visualizarPerfil' || isset($_POST['acao'])) {
     $usuario = new Usuario();
@@ -77,7 +91,7 @@ if ($acao === 'visualizarPerfil' || isset($_POST['acao'])) {
         header("Location: ../index.php?msg=conta_excluida");
         exit;
     }
-}
+    }   
 
     if ($acao == 'organizacao') { 
             header("Location: ../Pages/OrganizacaoPainel.php");

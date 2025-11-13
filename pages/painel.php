@@ -49,25 +49,21 @@ $total_cofres = $stmt->fetch()['total_cofres'] ?? 0;
   <meta charset="utf-8">
   <title>Painel - SenhaLock</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-
-  <!-- Estilo personalizado -->
   <link rel="stylesheet" href="../Pages/css/Painel.css">
 </head>
 <body>
 
 <div class="d-flex min-vh-100">
-    <!-- Sidebar -->
+   
     <aside class="sidebar d-flex flex-column p-4 text-white">
         <div class="logo mb-4">
             🔐 <span class="fw-bold">SenhaLock</span>
         </div>
         <nav class="menu nav flex-column">
             <a href="#" class="nav-link active">Menu principal</a>
-            <a href="#" class="nav-link">Gerador de senhas</a>
+            <a href="../App/gateway.php?acao=geradorPainel" class="nav-link">Gerador de senhas</a>
             <a href="#" class="nav-link">Cofre</a>
             <a href="../App/gateway.php?acao=perfil" class="nav-link">Perfil</a>
             <a href="../App/gateway.php?acao=organizacao" class="nav-link">Organizações</a>
@@ -75,14 +71,14 @@ $total_cofres = $stmt->fetch()['total_cofres'] ?? 0;
         </nav>
     </aside>
 
-    <!-- Conteúdo -->
+   
     <main class="content flex-grow-1 p-5 bg-light overflow-auto">
-        <h2 class="fw-semibold mb-2">Bem-vinda, <?= htmlspecialchars($_SESSION['nome']) ?></h2>
+        <h2 class="fw-semibold mb-2">Bem-vindo(a), <?= htmlspecialchars($_SESSION['nome']) ?></h2>
         <p class="text-muted mb-1">Você está conectada como <?= htmlspecialchars($_SESSION['email']) ?></p>
         </a>
 
         <div class="row g-4">
-            <!-- Card 1 -->
+           
             <div class="col-md-6">
                 <div class="card shadow-sm border-0">
                     <div class="card-body">
@@ -93,7 +89,7 @@ $total_cofres = $stmt->fetch()['total_cofres'] ?? 0;
                 </div>
             </div>
 
-            <!-- Card 2 -->
+            
             <div class="col-md-6">
                 <div class="card shadow-sm border-0">
                     <div class="card-body">
@@ -110,7 +106,6 @@ $total_cofres = $stmt->fetch()['total_cofres'] ?? 0;
     </main>
 </div>
 
-<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

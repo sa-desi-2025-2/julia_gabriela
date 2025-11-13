@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <nav class="menu nav flex-column flex-grow-1">
             <a href="#" class="nav-link active">Menu principal</a>
-            <a href="#" class="nav-link">Gerador de senhas</a>
+            <a href="../App/gateway.php?acao=geradorPainel" class="nav-link">Gerador de senhas</a>
             <a href="#" class="nav-link">Cofre</a>
             <a href="../App/gateway.php?acao=perfil" class="nav-link">Perfil</a>
             <a href="../App/gateway.php?acao=organizacao" class="nav-link">Organizações</a>
