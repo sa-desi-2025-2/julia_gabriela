@@ -40,6 +40,9 @@
                 $usuario->setSenha($senha);
             }
             if ($usuario->login()) {
+                session_start();
+                $_SESSION['email'] = $usuario->getEmail();
+
                 header("Location: ../pages/painel.php");
             }else {
                 session_start();
@@ -49,6 +52,32 @@
             }
         }
     }
+
+    if ($acao == 'perfil') { 
+        header("Location: ../Pages/Perfil.php");
+        exit;
+}
+
+if ($acao === 'visualizarPerfil' || isset($_POST['acao'])) {
+    $usuario = new Usuario();
+    $subacao = $_POST['acao'] ?? '';
+    $nome = $_POST['nome'] ?? '';
+    $email = $_POST['email'] ?? '';
+    $senha = $_POST['senha'] ?? '';
+
+    $id = $_SESSION['id_usuario'] ?? null;
+
+    if ($subacao === 'alterar' && $id) {
+        $usuario->atualizar($id, $nome, $email, $senha ?: null);
+        header("Location: ../Pages/Perfil.php?msg=alterado");
+        exit;
+    } else if ($subacao === 'excluir' && $id) {
+        $usuario->excluir($id);
+        session_destroy();
+        header("Location: ../index.php?msg=conta_excluida");
+        exit;
+    }
+}
 
     if ($acao == 'organizacao') { 
             header("Location: ../Pages/OrganizacaoPainel.php");
@@ -81,30 +110,4 @@
     //     }
     // }
 
-    if (!isset($_SESSION['id_usuario'])) {
-        header("Location: ../Pages/login.php");
-        exit;
-    }
-    
-    $acao = $_GET['acao'] ?? null;
-    $usuario = new Usuario();
-    $id = $_SESSION['id_usuario'];
-    
-    if ($acao === 'atualizarPerfil' || isset($_POST['acao'])) {
-        $subacao = $_POST['acao'];
-        $nome = $_POST['nome'];
-        $email = $_POST['email'];
-        $senha = $_POST['senha'];
-    
-        if ($subacao === 'alterar') {
-            $usuario->atualizar($id, $nome, $email, $senha ?: null);
-            header("Location: ../Pages/Perfil.php?msg=alterado");
-            exit;
-        } elseif ($subacao === 'excluir') {
-            $usuario->excluir($id);
-            session_destroy();
-            header("Location: ../index.php?msg=conta_excluida");
-            exit;
-        }
-    }
 ?>

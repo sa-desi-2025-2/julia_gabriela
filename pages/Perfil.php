@@ -4,16 +4,11 @@ session_start();
 
 $conexao = new Conexao();
 
-if (!isset($_SESSION['id_usuario'])) {
-    header("Location: index.php");
-    exit;
-}
+// if (!isset($_SESSION['id_usuario'])) {
+//     header("Location: index.php");
+//     exit;
+// }
 
-// dados de exemplo — substitua pela busca no banco
-$usuario = [
-    'nome' => 'João da Silva',
-    'email' => 'joao.silva@app.com'
-];
 ?>
 
 <!doctype html>
@@ -38,7 +33,7 @@ $usuario = [
       <a href="#">Menu principal</a>
       <a href="#">Gerador de senhas</a>
       <a href="#">Cofre</a>
-      <a href="#" class="active">Perfil</a>
+      <a href="../App/gateway.php?acao=perfil" class="active">Perfil</a>
       <a href="../App/gateway.php?acao=organizacao">Organizações</a>
       <a href="sair.php" class="logout">Logout</a>
     </nav>
@@ -54,15 +49,10 @@ $usuario = [
           <i class="bi bi-person-circle"></i>
         </div>
 
-        <form method="post" action="../App/gateway.php?acao=atualizarPerfil">
-          <div class="mb-3">
-            <label class="form-label">Nome:</label>
-            <input type="text" name="nome" class="form-control" value="<?= $usuario['nome'] ?>">
-          </div>
-
+        <form method="post" action="../App/gateway.php?acao=visualizarPerfil&subacao=alterar&subacao=excluir">
           <div class="mb-3">
             <label class="form-label">Email:</label>
-            <input type="email" name="email" class="form-control" value="<?= $usuario['email'] ?>">
+            <input type="email" name="email" class="form-control" value="<?= $_SESSION['email']; ?>">
           </div>
 
           <div class="mb-3">
