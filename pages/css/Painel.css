@@ -5,7 +5,6 @@ body {
     margin: 0;
 }
 
-/* SIDEBAR */
 .sidebar {
     width: 250px;
     background: linear-gradient(180deg, #6A0DAD 0%, #4b0082 100%);
@@ -35,7 +34,6 @@ body {
     color: #fff;
 }
 
-/* CONTEÚDO */
 .content {
     background-color: #fff;
     border-top-left-radius: 15px;
@@ -53,7 +51,6 @@ body {
     text-decoration: underline;
 }
 
-/* CARDS */
 .card {
     border-radius: 10px;
     transition: transform 0.2s ease, box-shadow 0.2s ease;

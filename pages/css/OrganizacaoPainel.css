@@ -1,73 +1,111 @@
-body {
-    font-family: "Inter", sans-serif;
-    background-color: #f8f9fa;
-    color: #222;
-    margin: 0;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
 }
 
-/* SIDEBAR */
 .sidebar {
-    width: 230px;
-    background: linear-gradient(180deg, #6A0DAD 0%, #4b0082 100%);
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
-    min-height: 100vh;
+  width: 250px;
+  background: linear-gradient(180deg, #6A0DAD 0%, #4b0082 100%);
+  color: #fff;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .logo {
-    font-size: 1.3rem;
-    display: flex;
-    align-items: center;
-    gap: 6px;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .menu .nav-link {
-    color: #ddd;
-    font-size: 0.95rem;
-    border-radius: 8px;
-    margin-bottom: 8px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+  color: #ddd;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .menu .nav-link:hover,
 .menu .nav-link.active {
-    background: rgba(255, 255, 255, 0.2);
-    color: #fff;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
 }
 
-/* CONTEÚDO */
+.logout {
+  font-weight: 500;
+  color: #ffcccc !important;
+  transition: color 0.3s ease;
+}
+
+.logout:hover {
+  color: #fff !important;
+}
+
 .conteudo {
-    background-color: #fff;
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .btn-novo {
-    background-color: #6A0DAD !important;
-    border: none !important;
-    font-weight: 500;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
+  background-color: #6A0DAD !important;
+  border: none !important;
+  font-weight: 500;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .btn-novo:hover {
-    background-color: #580a94 !important;
+  background-color: #520a8a !important;
+  transform: translateY(-2px);
 }
 
-/* CARD ORGANIZAÇÃO */
+
 .card-org {
-    border-radius: 12px;
-    background-color: #fff;
+  border-radius: 12px;
+  background-color: #fff;
 }
 
 .link-convidar {
-    color: #6A0DAD;
-    text-decoration: none;
-    font-weight: 500;
+  color: #6A0DAD;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .link-convidar:hover {
-    text-decoration: underline;
+  text-decoration: underline;
+  color: #520a8a;
+  transform: translateY(-2px);
+}
+
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 0;
+  }
+
+  .menu {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .logout {
+    margin-top: 0;
+  }
 }
