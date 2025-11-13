@@ -4,10 +4,10 @@ session_start();
 
 $conexao = new Conexao();
 
-if (isset($_SESSION['id_usuario'])) {
-    header("Location: painel.php");
-    exit;
-}
+// if (!isset($_SESSION['id_usuario'])) {
+//     header("Location: painel.php");
+//     exit;
+// }
 
 $mensagem = "Bem vindo!";
 ?>

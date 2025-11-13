@@ -2,10 +2,10 @@
 session_start();
 require_once '../App/Classes/Conexao.php';
 
-if (!isset($_SESSION['id_usuario'])) {
-    header("Location: index.php");
-    exit;
-}
+// if (!isset($_SESSION['id_usuario'])) {
+//     header("Location: index.php");
+//     exit;
+// }
 
 $conn = new Conexao();
 
@@ -69,7 +69,7 @@ $total_cofres = $stmt->fetch()['total_cofres'] ?? 0;
             <a href="#" class="nav-link active">Menu principal</a>
             <a href="#" class="nav-link">Gerador de senhas</a>
             <a href="#" class="nav-link">Cofre</a>
-            <a href="#" class="nav-link">Perfil</a>
+            <a href="../App/gateway.php?acao=perfil" class="nav-link">Perfil</a>
             <a href="../App/gateway.php?acao=organizacao" class="nav-link">Organizações</a>
             <a href="sair.php" class="nav-link text-danger mt-auto">Logout</a>
         </nav>
@@ -79,8 +79,6 @@ $total_cofres = $stmt->fetch()['total_cofres'] ?? 0;
     <main class="content flex-grow-1 p-5 bg-light overflow-auto">
         <h2 class="fw-semibold mb-2">Bem-vinda, <?= htmlspecialchars($_SESSION['nome']) ?></h2>
         <p class="text-muted mb-1">Você está conectada como <?= htmlspecialchars($_SESSION['email']) ?></p>
-        <a href="#" class="editar-perfil d-inline-flex align-items-center mb-4">
-            <i class="bi bi-pencil me-1"></i> Editar perfil
         </a>
 
         <div class="row g-4">

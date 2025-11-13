@@ -5,7 +5,6 @@
   font-family: 'Inter', sans-serif;
 }
 
-/* SIDEBAR */
 .sidebar {
   width: 250px;
   background: linear-gradient(180deg, #6A0DAD 0%, #4b0082 100%);
@@ -35,7 +34,7 @@
   color: #fff;
 }
 
-/* MAIN */
+
 .main {
   background-color: #f9f9f9;
 }
@@ -51,7 +50,7 @@
   color: #555;
 }
 
-/* BOTÕES */
+
 .btn-primary {
   background-color: #6A0DAD !important;
   border: none !important;
@@ -76,7 +75,6 @@
   transform: translateY(-2px);
 }
 
-/* RESPONSIVIDADE */
 @media (max-width: 768px) {
   .sidebar {
       width: 100%;
