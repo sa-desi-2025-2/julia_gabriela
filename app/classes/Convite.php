@@ -1,8 +1,9 @@
 <?php
+require_once __DIR__ . '/Conexao.php';
+
 class Convite
 {
-    private $conn; // conexão PDO
-    private $table = "Convite";
+    private $conexao;
 
     public $id_convite;
     public $email_convidado;
