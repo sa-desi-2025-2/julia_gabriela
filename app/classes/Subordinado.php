@@ -69,3 +69,4 @@ class Subordinado {
         return $stmt->execute([$ativo, $id_subordinado]);
     }
 }
+?>
