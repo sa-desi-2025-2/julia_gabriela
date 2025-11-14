@@ -15,13 +15,18 @@ $conn = new Conexao();
 <head>
     <meta charset="UTF-8">
     <title>SenhaLock</title>
-    <link rel="stylesheet" href="dashboard.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="../pages/css/Cofre.css">
 </head>
 <body>
 
-<div class="d-flex min-vh-100">
+<div class="d-flex min-vh-100"> 
+
     <aside class="sidebar d-flex flex-column p-4 text-white">
         <div class="logo mb-4">🔐 <span class="fw-bold">SenhaLock</span></div>
+
         <nav class="menu nav flex-column">
             <a href="../Pages/painel.php" class="nav-link active">Menu principal</a>
             <a href="../App/gateway.php?acao=geradorPainel" class="nav-link">Gerador de senhas</a>
@@ -31,16 +36,17 @@ $conn = new Conexao();
             <a href="sair.php" class="nav-link text-danger mt-auto">Logout</a>
         </nav>
     </aside>
-</div>
 
-<div class="content">
-    <h2>Todos os Cofres</h2>
-    <p>Você está conectado como <?php echo $_SESSION['email']; ?></p>
+    <div class="content">
+        <h2>Todos os Cofres</h2>
+        <p>Você está conectado como <?= $_SESSION['email']; ?></p>
 
-    <div class="card">
-        <h3>Meus Cofres</h3>
+        <div class="card">
+            <h3>Meus Cofres</h3>
+        </div>
     </div>
-</div>
+
+</div> 
 
 </body>
 </html>
