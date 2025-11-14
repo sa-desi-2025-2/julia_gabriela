@@ -14,6 +14,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  padding: 25px;
 }
 
 .logo {
@@ -21,6 +22,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  margin-bottom: 20px;
 }
 
 .menu .nav-link {
@@ -41,6 +43,8 @@
   font-weight: 500;
   color: #ffcccc !important;
   transition: color 0.3s ease;
+  margin-top: auto;
+  margin-bottom: 15px;
 }
 
 .logout:hover {
@@ -52,6 +56,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  padding: 30px;
 }
 
 .btn-novo {
@@ -69,7 +74,6 @@
   background-color: #520a8a !important;
   transform: translateY(-2px);
 }
-
 
 .card-org {
   border-radius: 12px;
@@ -89,7 +93,6 @@
   transform: translateY(-2px);
 }
 
-
 @media (max-width: 768px) {
   .sidebar {
     width: 100%;
@@ -97,6 +100,7 @@
     align-items: center;
     justify-content: space-between;
     border-radius: 0;
+    padding: 15px;
   }
 
   .menu {
@@ -107,5 +111,6 @@
 
   .logout {
     margin-top: 0;
+    margin-bottom: 0;
   }
 }

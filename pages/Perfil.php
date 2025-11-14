@@ -33,9 +33,9 @@ $conexao = new Conexao();
           🔐 <span class="fw-bold">SenhaLock</span>
       </div>
       <nav class="menu nav flex-column flex-grow-1">
-          <a href="#" class="nav-link">Menu principal</a>
+          <a href="../Pages/painel.php" class="nav-link">Menu principal</a>
           <a href="../App/gateway.php?acao=geradorPainel" class="nav-link">Gerador de senhas</a>
-          <a href="#" class="nav-link">Cofre</a>
+          <a href="../App/gateway.php?acao=CofrePainel" class="nav-link">Cofre</a>
           <a href="../App/gateway.php?acao=perfil" class="nav-link active">Perfil</a>
           <a href="../App/gateway.php?acao=organizacao" class="nav-link">Organizações</a>
           <a href="sair.php" class="nav-link text-danger mt-auto">Logout</a>

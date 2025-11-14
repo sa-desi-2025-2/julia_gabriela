@@ -65,6 +65,11 @@
         echo json_encode(['senha' => $senha]);
         exit;
       }
+
+      if ($acao == 'CofrePainel') { 
+        header("Location: ../Pages/CofrePainel.php");
+        exit;
+    }
       
 
     if ($acao == 'perfil') { 
