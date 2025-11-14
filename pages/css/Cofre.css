@@ -1,0 +1,118 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  body {
+    background-color: #f4f4f8;
+    display: flex;
+    min-height: 100vh;
+    color: #222;
+  }
+  
+  .sidebar {
+    width: 250px;
+    background: linear-gradient(180deg, #6A0DAD 0%, #4B0082 100%);
+    color: #fff;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+  }
+  
+  .logo {
+    font-size: 1.4rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 30px;
+  }
+  
+  .menu .nav-link {
+    color: #e4e4e4;
+    text-decoration: none;
+    font-size: 0.95rem;
+    padding: 10px 12px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    transition: 0.25s ease;
+  }
+  
+  .menu .nav-link:hover,
+  .menu .nav-link.active {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+  }
+  
+  .nav-link.text-danger {
+    margin-top: auto;
+    font-weight: 600;
+    color: #ffb3b3 !important;
+  }
+  
+  .nav-link.text-danger:hover {
+    color: #fff !important;
+  }
+  
+  .content {
+    padding: 40px;
+    flex: 1;
+  }
+  
+  .content h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: #4B0082;
+  }
+  
+  .content p {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 25px;
+  }
+ 
+  .card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.08);
+    margin-bottom: 20px;
+  }
+  
+  .card h3 {
+    color: #4B0082;
+    margin-bottom: 15px;
+  }
+  
+  @media (max-width: 768px) {
+    body {
+      flex-direction: column;
+    }
+  
+    .sidebar {
+      width: 100%;
+      flex-direction: row;
+      justify-content: space-between;
+      border-radius: 0;
+    }
+  
+    .menu {
+      flex-direction: row;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+  
+    .nav-link.text-danger {
+      margin-top: 0;
+    }
+  
+    .content {
+      padding: 20px;
+    }
+  }
+  
