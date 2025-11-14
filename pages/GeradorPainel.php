@@ -7,7 +7,6 @@ require_once '../App/Classes/Conexao.php';
 //     exit;
 // }
 
-
 $conn = new Conexao();
 ?>
 
@@ -30,9 +29,9 @@ $conn = new Conexao();
   <aside class="sidebar p-4">
     <div class="logo mb-4">🔐 SenhaLock</div>
     <nav class="menu d-flex flex-column gap-2">
-      <a href="#" class="nav-link">Menu principal</a>
+      <a href="../Pages/painel.php" class="nav-link">Menu principal</a>
       <a href="../Pages/Gerador.php" class="nav-link active">Gerador de senhas</a>
-      <a href="#" class="nav-link">Cofre</a>
+      <a href="../App/gateway.php?acao=CofrePainel" class="nav-link">Cofre</a>
       <a href="../Pages/Perfil.php" class="nav-link">Perfil</a>
       <a href="../App/gateway.php?acao=organizacao" class="nav-link">Organizações</a>
       <a href="../Pages/sair.php" class="nav-link logout">Logout</a>

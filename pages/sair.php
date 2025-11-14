@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             🔐 <span class="fw-bold">SenhaLock</span>
         </div>
         <nav class="menu nav flex-column flex-grow-1">
-            <a href="#" class="nav-link active">Menu principal</a>
+            <a href="../Pages/painel.php" class="nav-link active">Menu principal</a>
             <a href="../App/gateway.php?acao=geradorPainel" class="nav-link">Gerador de senhas</a>
             <a href="../App/gateway.php?acao=CofrePainel" class="nav-link">Cofre</a>
             <a href="../App/gateway.php?acao=perfil" class="nav-link">Perfil</a>
