@@ -6,8 +6,8 @@ class Organizacao {
 
     public function __construct() {
         $this->conexao = new Conexao();
-     }
-     
+    }
+    
     /*Cadastra uma nova organização*/
     public function cadastrar($nome, $id_usuario_criador) {
         $stmt = $this->conexao->prepare("
