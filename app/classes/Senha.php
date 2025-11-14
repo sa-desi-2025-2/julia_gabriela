@@ -1,4 +1,5 @@
-<!-- dentro da classe criar uma função de criptografia aes não pode ser hash -->
+<!-- dentro da classe criar uma função de criptografia aes não pode ser hash 
+ função para descriptografar -->
 <?php
 require_once __DIR__ . '/Conexao.php';
 
@@ -44,9 +45,7 @@ class Senha
     // oq pode ser editado 
     public function setConta(string $conta): void { $this->conta = $conta; }
     public function setUsuarioLogin(?string $usuario_login): void { $this->usuario_login = $usuario_login; }
-
-    // Substitui a senha criptografada por outra
-    //public function setSenhaCriptografada(string $senha): void { $this->senha_criptografada = $senha; }
+    private function setSenhaCriptografada(string $senha): void { $this->senha_criptografada = $senha; }
     public function setObservacao(?string $observacao): void { $this->observacao = $observacao; }
     public function setIdPasta(int $id_pasta): void { $this->id_pasta = $id_pasta; }
 }
