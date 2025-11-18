@@ -103,6 +103,34 @@ if ($acao === 'visualizarPerfil' || isset($_POST['acao'])) {
             exit;
     }
 
+$acao = $_GET['acao'] ?? '';
+
+if ($acao === 'novaOrganizacao') {
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // if (!isset($_SESSION['id_usuario'])) {
+        //     header("Location: ../index.php");
+        //     exit;
+        // }
+        $nome = trim($_POST['nome_organizacao']);
+        session_start();
+        $id_usuario = $_SESSION['id_usuario'];
+        if (empty($nome)) {
+            header("Location: ../Pages/organizacaoPainel.php?erro=nomeVazio");
+            exit;
+        }
+
+        $organizacao = new Organizacao();
+        if ($organizacao->cadastrar($nome, $id_usuario)) {
+            header("Location: ../Pages/organizacaoPainel.php?sucesso=1");
+        } else {
+            header("Location: ../Pages/organizacaoPainel.php?erro=1");
+        }
+
+        exit;
+    }
+}
+
     if ($acao == 'convite') {
         require_once __DIR__ . '/Classes/Convite.php';
         $convite = new Convite();
