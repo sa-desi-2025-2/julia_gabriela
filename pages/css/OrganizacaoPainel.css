@@ -174,3 +174,14 @@ body {
     margin-bottom: 0;
   }
 }
+.modal-content {
+  border-radius: 14px;
+}
+
+.modal-header {
+  border-bottom: none;
+}
+
+.modal-footer {
+  border-top: none;
+}

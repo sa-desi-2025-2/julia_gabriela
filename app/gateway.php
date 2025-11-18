@@ -4,6 +4,7 @@
     require_once __DIR__ . '/Classes/Organizacao.php';
     require_once __DIR__ . '/Classes/Convite.php';
     require_once __DIR__ . '/Classes/Subordinado.php';
+    require_once __DIR__ . '/Classes/Cofre.php';
 
     $acao = $_GET['acao'];
 
@@ -70,7 +71,29 @@
         header("Location: ../Pages/CofrePainel.php");
         exit;
     }
-      
+
+    if ($acao === 'novoCofre') {
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $nome = trim($_POST['nome_cofre']);
+            session_start();
+            $id_usuario = $_SESSION['id_usuario'];
+            if (empty($nome)) {
+                header("Location: ../Pages/CofrePainel.php?erro=nomeVazio");
+                exit;
+            }
+    
+            $organizacao = new Cofre();
+            if ($organizacao->criarCofre($nome, $id_usuario)) {
+                header("Location: ../Pages/CofrePainel.php?sucesso=1");
+            } else {
+                header("Location: ../Pages/CofrePainel.php?erro=1");
+            }
+    
+            exit;
+        }
+    }
+    
 
     if ($acao == 'perfil') { 
         header("Location: ../Pages/Perfil.php");
@@ -102,6 +125,34 @@ if ($acao === 'visualizarPerfil' || isset($_POST['acao'])) {
             header("Location: ../Pages/OrganizacaoPainel.php");
             exit;
     }
+
+$acao = $_GET['acao'] ?? '';
+
+if ($acao === 'novaOrganizacao') {
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // if (!isset($_SESSION['id_usuario'])) {
+        //     header("Location: ../index.php");
+        //     exit;
+        // }
+        $nome = trim($_POST['nome_organizacao']);
+        session_start();
+        $id_usuario = $_SESSION['id_usuario'];
+        if (empty($nome)) {
+            header("Location: ../Pages/organizacaoPainel.php?erro=nomeVazio");
+            exit;
+        }
+
+        $organizacao = new Organizacao();
+        if ($organizacao->cadastrar($nome, $id_usuario)) {
+            header("Location: ../Pages/organizacaoPainel.php?sucesso=1");
+        } else {
+            header("Location: ../Pages/organizacaoPainel.php?erro=1");
+        }
+
+        exit;
+    }
+}
 
     if ($acao == 'convite') {
         require_once __DIR__ . '/Classes/Convite.php';

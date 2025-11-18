@@ -40,7 +40,7 @@ $conexao = new Conexao();
         <div class="d-flex align-items-center justify-content-between mb-4">
             <h2 class="fw-semibold text-dark mb-0">Meus Cofres</h2>
 
-            <button type="button" class="btn btn-primary btn-novo">
+            <button type="button" class="btn btn-primary btn-novo" data-bs-toggle="modal" data-bs-target="#modalNovoCofre">
                 <i class="bi bi-plus-lg"></i> Novo Cofre
             </button>
         </div>
@@ -56,6 +56,36 @@ $conexao = new Conexao();
                 <a href="#" class="link-convidar">Abrir</a>
             </div>
         </div>
+
+        <div class="modal fade" id="modalNovoCofre" tabindex="-1">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+              <div class="modal-header">
+                <h5 class="modal-title">Novo Cofre</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+
+              <form method="post" action="../App/gateway.php?acao=novoCofre">
+
+                <div class="modal-body">
+
+                  <div class="mb-3">
+                    <label class="form-label">Nome do Cofre</label>
+                    <input type="text" class="form-control" name="nome_cofre" placeholder="Ex: Cofre de Logins" required>
+                  </div>
+                </div>
+
+                <div class="modal-footer">
+                  <button type="submit" class="btn btn-primary">Criar</button>
+                </div>
+
+              </form>
+
+            </div>
+          </div>
+        </div>
+
     </main>
 
 </div>
