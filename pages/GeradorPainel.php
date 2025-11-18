@@ -24,52 +24,57 @@ $conn = new Conexao();
 </head>
 
 <body>
-<div class="dashboard d-flex">
+<div class="d-flex min-vh-100">
 
-  <aside class="sidebar p-4">
-    <div class="logo mb-4">🔐 SenhaLock</div>
-    <nav class="menu d-flex flex-column gap-2">
-      <a href="../Pages/painel.php" class="nav-link">Menu principal</a>
-      <a href="../Pages/Gerador.php" class="nav-link active">Gerador de senhas</a>
-      <a href="../App/gateway.php?acao=CofrePainel" class="nav-link">Cofre</a>
-      <a href="../Pages/Perfil.php" class="nav-link">Perfil</a>
-      <a href="../App/gateway.php?acao=organizacao" class="nav-link">Organizações</a>
-      <a href="../Pages/sair.php" class="nav-link logout">Logout</a>
-    </nav>
-  </aside>
+    <!-- SIDEBAR -->
+    <aside class="sidebar d-flex flex-column p-4 text-white">
+        <div class="logo mb-4">🔐 <span class="fw-bold">SenhaLock</span></div>
 
-  <main class="conteudo flex-grow-1 p-5 d-flex justify-content-between align-items-start">
+        <nav class="menu nav flex-column">
+            <a href="../Pages/painel.php" class="nav-link">Menu principal</a>
+            <a href="../Pages/Gerador.php" class="nav-link active">Gerador de senhas</a>
+            <a href="../App/gateway.php?acao=CofrePainel" class="nav-link">Cofre</a>
+            <a href="../App/gateway.php?acao=perfil" class="nav-link">Perfil</a>
+            <a href="../App/gateway.php?acao=organizacao" class="nav-link">Organizações</a>
+            <a href="../Pages/sair.php" class="nav-link text-danger mt-auto">Logout</a>
+        </nav>
+    </aside>
 
-    <div class="texto">
-      <h1>Crie <br><strong>Senhas<br>Rapidamente.</strong></h1>
-      <p class="text-muted">Gere combinações fortes e aleatórias para proteger suas contas.</p>
-    </div>
+    <!-- CONTEÚDO -->
+    <main class="content flex-grow-1 p-5 bg-light d-flex justify-content-between align-items-start">
 
-    <div class="gerador-card">
-      <h5>Crie uma nova senha</h5>
-      <p class="text-muted">Personalize sua nova senha</p>
+        <!-- Texto -->
+        <div class="texto">
+            <h1>Crie <br><strong>Senhas<br>Rapidamente.</strong></h1>
+            <p class="text-muted">Gere combinações fortes e aleatórias para proteger suas contas.</p>
+        </div>
 
-      <div class="opcoes">
-        <label><input type="checkbox" class="check-maiusculas" checked> ABC</label>
-        <label><input type="checkbox" class="check-minusculas" checked> abc</label>
-        <label><input type="checkbox" class="check-numeros"> 123</label>
-        <label><input type="checkbox" class="check-simbolos"> #$</label>
-      </div>
+        <!-- Card Gerador -->
+        <div class="gerador-card">
+            <h5>Crie uma nova senha</h5>
+            <p class="text-muted">Personalize sua nova senha</p>
 
-      <div class="range-box mt-2">
-        <input type="range" class="range-tamanho" min="6" max="20" value="8">
-        <span class="valor-tamanho">8</span>
-      </div>
+            <div class="opcoes">
+                <label><input type="checkbox" class="check-maiusculas" checked> ABC</label>
+                <label><input type="checkbox" class="check-minusculas" checked> abc</label>
+                <label><input type="checkbox" class="check-numeros"> 123</label>
+                <label><input type="checkbox" class="check-simbolos"> #$</label>
+            </div>
 
-      <input type="text" class="campo-senha form-control mb-3" readonly>
+            <div class="range-box mt-2">
+                <input type="range" class="range-tamanho" min="6" max="20" value="8">
+                <span class="valor-tamanho">8</span>
+            </div>
 
-      <div class="botoes mt-2">
-        <button type="button" class="btn btn-primary btn-copiar">Copiar senha</button>
-        <button type="button" class="btn btn-secondary btn-gerar">Atualizar senha</button>
-      </div>
-    </div>
+            <input type="text" class="campo-senha form-control mb-3" readonly>
 
-  </main>
+            <div class="botoes mt-2 d-flex gap-2">
+                <button type="button" class="btn btn-primary btn-copiar">Copiar senha</button>
+                <button type="button" class="btn btn-secondary btn-gerar">Atualizar senha</button>
+            </div>
+        </div>
+
+    </main>
 </div>
 
 <script src="../Pages/js/GeradorPainel.js"></script>
