@@ -43,6 +43,9 @@ $conn = new Conexao();
 
         <div class="card">
             <h3>Meus Cofres</h3>
+            <button type="button" class="btn btn-primary btn-novo">
+                <i class="bi bi-plus-lg"></i> Novo Cofre
+            </button>
         </div>
     </div>
 
