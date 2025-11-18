@@ -1,118 +1,117 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
-  }
-  
-  body {
-    background-color: #f4f4f8;
-    display: flex;
-    min-height: 100vh;
-    color: #222;
-  }
-  
-  .sidebar {
-    width: 250px;
-    background: linear-gradient(180deg, #6A0DAD 0%, #4B0082 100%);
-    color: #fff;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    padding: 25px;
-  }
-  
-  .logo {
-    font-size: 1.4rem;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 30px;
-  }
-  
-  .menu .nav-link {
-    color: #e4e4e4;
-    text-decoration: none;
-    font-size: 0.95rem;
-    padding: 10px 12px;
-    border-radius: 8px;
-    margin-bottom: 8px;
-    transition: 0.25s ease;
-  }
-  
-  .menu .nav-link:hover,
-  .menu .nav-link.active {
-    background-color: rgba(255, 255, 255, 0.2);
-    color: #fff;
-  }
-  
-  .nav-link.text-danger {
-    margin-top: auto;
-    font-weight: 600;
-    color: #ffb3b3 !important;
-  }
-  
-  .nav-link.text-danger:hover {
-    color: #fff !important;
-  }
-  
-  .content {
-    padding: 40px;
-    flex: 1;
-  }
-  
-  .content h2 {
-    font-size: 1.8rem;
-    margin-bottom: 10px;
-    color: #4B0082;
-  }
-  
-  .content p {
-    font-size: 0.95rem;
-    color: #555;
-    margin-bottom: 25px;
-  }
- 
-  .card {
-    background: #fff;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0px 4px 12px rgba(0,0,0,0.08);
-    margin-bottom: 20px;
-  }
-  
-  .card h3 {
-    color: #4B0082;
-    margin-bottom: 15px;
-  }
-  
-  @media (max-width: 768px) {
-    body {
-      flex-direction: column;
-    }
-  
-    .sidebar {
-      width: 100%;
-      flex-direction: row;
-      justify-content: space-between;
-      border-radius: 0;
-    }
-  
-    .menu {
-      flex-direction: row;
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-  
-    .nav-link.text-danger {
-      margin-top: 0;
-    }
-  
-    .content {
-      padding: 20px;
-    }
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+.sidebar {
+  width: 250px;
+  background: linear-gradient(180deg, #6A0DAD 0%, #4b0082 100%);
+  color: #fff;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 25px;
+}
+
+.logo {
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.menu .nav-link {
+  color: #ddd;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.menu .nav-link:hover,
+.menu .nav-link.active {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.logout {
+  font-weight: 500;
+  color: #ffcccc !important;
+  transition: color 0.3s ease;
+  margin-top: auto;
+  margin-bottom: 15px;
+}
+
+.logout:hover {
+  color: #fff !important;
+}
+
+/* CONTEÚDO GERAL */
+.conteudo {
+  background-color: #f5f6fa;
+  padding: 40px 60px !important;
+}
+
+/* TÍTULO */
+.conteudo h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+/* BOTÃO ROXO */
+.btn-novo {
+  background-color: #6A0DAD !important;
+  border: none !important;
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: 0.2s ease;
+}
+
+.btn-novo:hover {
+  background-color: #520a8a !important;
+  transform: translateY(-2px);
+}
+
+/* CARD */
+.card-org {
+  border-radius: 12px;
+  background-color: #fff;
+  border: none !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+.card-org h5 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.card-org p {
+  font-size: 0.95rem;
+  color: #777;
+}
+
+/* LINK "CONVIDAR" / "ABRIR" */
+.link-convidar {
+  color: #6A0DAD;
+  font-weight: 500;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: 0.2s ease;
+}
+
+.link-convidar:hover {
+  color: #520a8a;
+  text-decoration: underline;
+}
