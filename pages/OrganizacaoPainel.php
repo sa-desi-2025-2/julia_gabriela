@@ -9,13 +9,14 @@ $conexao = new Conexao();
 //     exit;
 // }
 ?>
+
 <!doctype html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
   <title>Organizações - SenhaLock</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <link rel="stylesheet" href="../Pages/css/OrganizacaoPainel.css">
@@ -54,13 +55,18 @@ $conexao = new Conexao();
                     <h5 class="mb-1">Nome da Organização</h5>
                     <p class="mb-0 text-muted">Descrição ou informações adicionais</p>
                 </div>
-                <a href="#" class="link-convidar">Convidar</a>
+
+                <a href="#" class="link-convidar" onclick="copiarLink();">
+                    Convidar
+                </a>
             </div>
         </div>
 
     </main>
 </div>
 
+
+<!-- Modal Nova Organização -->
 <div class="modal fade" id="modalNovaOrganizacao" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -71,9 +77,7 @@ $conexao = new Conexao();
       </div>
 
       <form method="post" action="../App/gateway.php?acao=novaOrganizacao">
-
         <div class="modal-body">
-
           <div class="mb-3">
             <label class="form-label">Nome da organização</label>
             <input type="text" class="form-control" name="nome_organizacao" placeholder="Ex: Equipe de Suporte" required>
@@ -83,13 +87,15 @@ $conexao = new Conexao();
         <div class="modal-footer">
           <button type="submit" class="btn btn-primary">Criar</button>
         </div>
-
       </form>
 
     </div>
   </div>
 </div>
 
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../Pages/js/OrganizacaoPainel.js"></script>
+
 </body>
 </html>

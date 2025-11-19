@@ -4,137 +4,32 @@ require_once __DIR__ . '/Conexao.php';
 class Convite
 {
     private $conexao;
-
-    public $id_convite;
-    public $email_convidado;
-    public $id_organizacao;
-    public $status;
-    public $data_envio;
+    private $table = "convites";
 
     public function __construct() {
         $this->conexao = new Conexao();
-     }
-
-    // Criar novo convite (status inicial = PENDENTE)
-    public function criar()
-    {
-        $query = "INSERT INTO {$this->table} (email_convidado, id_organizacao, status)
-                  VALUES (:email_convidado, :id_organizacao, 'PENDENTE')";
-
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':email_convidado', $this->email_convidado);
-        $stmt->bindParam(':id_organizacao', $this->id_organizacao);
-
-        return $stmt->execute();
     }
 
-    // Atualizar status 
-    public function atualizarStatus($novoStatus)
+    public function enviarConvite($idUsuario)
     {
-        $query = "UPDATE {$this->table}
-                  SET status = :status
-                  WHERE id_convite = :id_convite";
+        $token = bin2hex(random_bytes(16));
 
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':status', $novoStatus);
-        $stmt->bindParam(':id_convite', $this->id_convite);
+        $sqlOrg = "SELECT id_organizacao FROM organizacoes WHERE id_usuario_criador = ?";
+        $stmtOrg = $this->conexao->getConexao()->prepare($sqlOrg);
+        $stmtOrg->execute([$idUsuario]);
+        $org = $stmtOrg->fetch(PDO::FETCH_ASSOC);
 
-        return $stmt->execute();
-    }
+        if (!$org) return null;
 
-    // Aceitar convite
-    public function aceitar()
-    {
-        return $this->atualizarStatus('ACEITO');
-    }
+        $idOrganizacao = $org['id_organizacao'];
 
-    // Recusar convite
-    public function recusar()
-    {
-        return $this->atualizarStatus('RECUSADO');
-    }
+        $sql = "INSERT INTO convites (token, id_usuario, id_organizacao, status, data_envio)
+                VALUES (?, ?, ?, 'PENDENTE', NOW())";
 
-    // Reverter para pendente
-    public function pendente()
-    {
-        return $this->atualizarStatus('PENDENTE');
-    }
+        $stmt = $this->conexao->getConexao()->prepare($sql);
+        $stmt->execute([$token, $idUsuario, $idOrganizacao]);
 
-    // Buscar por ID
-    public function buscarPorId($id_convite)
-    {
-        $query = "SELECT * FROM {$this->table} WHERE id_convite = :id_convite";
-
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':id_convite', $id_convite);
-        $stmt->execute();
-
-        return $stmt->fetch(PDO::FETCH_ASSOC);
-    }
-
-    // Listar todos os convites (opcionalmente por status)
-    public function listar($status = null)
-    {
-        $query = "SELECT * FROM {$this->table}";
-        if ($status) {
-            $query .= " WHERE status = :status";
-        }
-        $query .= " ORDER BY data_envio DESC";
-
-        $stmt = $this->conn->prepare($query);
-        if ($status) {
-            $stmt->bindParam(':status', $status);
-        }
-        $stmt->execute();
-
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-
-    // Listar convites de uma organização
-    public function listarPorOrganizacao($id_organizacao, $status = null)
-    {
-        $query = "SELECT * FROM {$this->table} WHERE id_organizacao = :id_organizacao";
-        if ($status) {
-            $query .= " AND status = :status";
-        }
-        $query .= " ORDER BY data_envio DESC";
-
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':id_organizacao', $id_organizacao);
-        if ($status) {
-            $stmt->bindParam(':status', $status);
-        }
-        $stmt->execute();
-
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-
-    // Listar convites de um e-mail específico
-    public function listarPorEmail($email_convidado, $status = null)
-    {
-        $query = "SELECT * FROM {$this->table} WHERE email_convidado = :email_convidado";
-        if ($status) {
-            $query .= " AND status = :status";
-        }
-        $query .= " ORDER BY data_envio DESC";
-
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':email_convidado', $email_convidado);
-        if ($status) {
-            $stmt->bindParam(':status', $status);
-        }
-        $stmt->execute();
-
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-
-    // Excluir convite
-    public function deletar()
-    {
-        $query = "DELETE FROM {$this->table} WHERE id_convite = :id_convite";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':id_convite', $this->id_convite);
-        return $stmt->execute();
+        return "https://seusite.com/convite.php?token=" . $token;
     }
 }
 ?>

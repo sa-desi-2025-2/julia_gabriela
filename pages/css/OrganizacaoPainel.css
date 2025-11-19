@@ -1,63 +1,9 @@
-/* * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Inter", sans-serif;
-}
-
-.sidebar {
-  width: 250px;
-  background: linear-gradient(180deg, #6A0DAD 0%, #4b0082 100%);
-  color: #fff;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding: 25px;
-}
-
-.logo {
-  font-size: 1.4rem;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 20px;
-}
-
-.menu .nav-link {
-  color: #ddd;
-  font-size: 0.95rem;
-  border-radius: 8px;
-  margin-bottom: 8px;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.menu .nav-link:hover,
-.menu .nav-link.active {
-  background-color: rgba(255, 255, 255, 0.2);
-  color: #fff;
-}
-
-.logout {
-  font-weight: 500;
-  color: #ffcccc !important;
-  transition: color 0.3s ease;
-  margin-top: auto;
-  margin-bottom: 15px;
-}
-
-.logout:hover {
-  color: #fff !important;
-} */
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
 }
-
 
 body {
   font-family: "Inter", sans-serif;
@@ -174,6 +120,7 @@ body {
     margin-bottom: 0;
   }
 }
+
 .modal-content {
   border-radius: 14px;
 }
@@ -184,4 +131,27 @@ body {
 
 .modal-footer {
   border-top: none;
+}
+
+.modal-content .btn-primary {
+  background-color: #6A0DAD;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 20px;
+  transition: 0.3s ease;
+}
+
+.modal-content .btn-primary:hover {
+  background-color: #520a8a;
+}
+
+/* Campo de texto mais bonito */
+.modal-content .form-control {
+  border-radius: 8px;
+  border: 1px solid #cfcfcf;
+}
+
+.modal-content .form-control:focus {
+  border-color: #6A0DAD;
+  box-shadow: 0 0 0 0.2rem rgba(106, 13, 173, 0.25);
 }
