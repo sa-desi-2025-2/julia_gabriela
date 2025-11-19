@@ -83,8 +83,13 @@
                 exit;
             }
     
-            $organizacao = new Cofre();
-            if ($organizacao->criarCofre($nome, $id_usuario)) {
+            $cofre = new Cofre();
+            $cofre->setNome($nome);
+            echo $nome . ' - ';
+            $cofre->setIdSubordinado($id_usuario);
+            echo $id_usuario;
+            die();
+            if ($cofre->inserir()) {
                 header("Location: ../Pages/CofrePainel.php?sucesso=1");
             } else {
                 header("Location: ../Pages/CofrePainel.php?erro=1");
@@ -154,12 +159,16 @@ if ($acao === 'novaOrganizacao') {
     }
 }
 
-    if ($acao == 'convite') {
-        require_once __DIR__ . '/Classes/Convite.php';
-        $convite = new Convite();
-        $convite->enviarConvite($_SESSION['id_usuario']);
-    }
-    
+if ($acao == 'convite') {
+
+    require_once __DIR__ . '/Classes/Convite.php';
+    $convite = new Convite();
+
+    $link = $convite->enviarConvite($_SESSION['id_usuario']);
+
+    echo $link; // retorna pro JS
+    exit;
+}
 
     // if ($acao == 'subordinado') {
     //     $sub = new Subordinado();
