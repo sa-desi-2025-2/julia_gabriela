@@ -1,74 +1,137 @@
+/* ============================
+   LAYOUT GERAL
+============================ */
 body {
-    font-family: "Inter", Arial, sans-serif;
-    background-color: #f8f9fc;
-    color: #333;
     margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: #f4f4f9;
 }
 
 .sidebar {
-    width: 250px;
-    background: linear-gradient(180deg, #6A0DAD 0%, #4b0082 100%);
-    color: #fff;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
+    width: 240px;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #520a8a 0%, #2a004d 100%);
 }
 
-.logo {
-    font-size: 1.4rem;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.menu .nav-link {
-    color: #ddd;
-    font-size: 0.95rem;
-    border-radius: 8px;
-    margin-bottom: 8px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.menu .nav-link:hover,
-.menu .nav-link.active {
-    background-color: rgba(255, 255, 255, 0.2);
-    color: #fff;
-}
-
-.content {
-    background-color: #fff;
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
-}
-
-.editar-perfil {
-    color: #6A0DAD;
-    text-decoration: none;
+.sidebar .nav-link {
+    color: #e6e6e6;
+    margin-bottom: 10px;
     font-weight: 500;
-    font-size: 0.95rem;
 }
 
-.editar-perfil:hover {
-    text-decoration: underline;
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+    color: #fff;
+    background: rgba(255,255,255,0.1);
+    border-radius: 8px;
 }
 
-.card {
+.main {
+    padding: 30px;
+}
+
+.perfil-container {
+    width: 100%;
+    max-width: 550px;
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.btn-primary {
+    background: #7a0fc4;
+    border-color: #7a0fc4;
+}
+
+.btn-primary:hover {
+    background: #5e07a1;
+}
+
+.btn-secondary {
+    background: #6c757d;
+    border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+    background: #565e64;
+}
+
+/* ============================
+   MODAL (SEM JAVASCRIPT)
+============================ */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    padding: 20px;
+}
+
+.modal:target {
+    display: flex;
+}
+
+.modal-content {
+    background: #fff;
+    width: 100%;
+    max-width: 450px;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    animation: fadeIn 0.25s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Títulos */
+.modal-content h3 {
+    font-weight: 700;
+    text-align: center;
+}
+
+/* Inputs */
+.modal-content input {
+    height: 45px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.modal-content input:focus {
+    border-color: #7a0fc4;
+    box-shadow: 0 0 0 3px rgba(122,15,196,0.25);
+}
+
+/* Botões no modal */
+.modal-content .btn {
+    height: 45px;
     border-radius: 10px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    font-weight: 600;
 }
 
-.card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+/* Botão excluir */
+.btn-danger {
+    background: #c82333;
+    border-color: #c82333;
 }
 
-.card-title {
-    color: #111;
+.btn-danger:hover {
+    background: #a80e1f;
 }
 
-.card-text {
-    color: #555;
+/* Botão cancelar */
+.btn-outline-secondary:hover {
+    background: #e6e6e6;
 }
 
-ul li::marker {
-    color: #6A0DAD;
+/* Ajuste no mobile */
+@media (max-width: 768px) {
+    .sidebar {
+        display: none;
+    }
 }
