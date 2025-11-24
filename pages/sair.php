@@ -46,7 +46,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <a href="../App/gateway.php?acao=geradorPainel" class="nav-link">Gerador de senhas</a>
             <a href="../App/gateway.php?acao=CofrePainel" class="nav-link">Cofre</a>
             <a href="../App/gateway.php?acao=perfil" class="nav-link">Perfil</a>
-            <a href="../App/gateway.php?acao=organizacao" class="nav-link">Organizações</a>
+            <?php if (!$_SESSION['eh_subordinado']) { ?>
+                <a href="../App/gateway.php?acao=organizacao" class="nav-link">Organizações</a>
+            <?php } ?>
             <a href="sair.php" class="nav-link text-danger mt-auto">Logout</a>
         </nav>
     </aside>

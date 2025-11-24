@@ -50,6 +50,15 @@ class Subordinado {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    /*Busca um subordinado por id_usuario*/
+    public function buscarPorIdUsuario($id_usuario) {
+        $stmt = $this->conexao->prepare("
+            SELECT * FROM Subordinado WHERE id_usuario = ?
+        ");
+        $stmt->execute([$id_usuario]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     /*Verifica se um subordinado está ativo*/
     public function estaAtivo($id_usuario, $id_organizacao) {
         $stmt = $this->conexao->prepare("

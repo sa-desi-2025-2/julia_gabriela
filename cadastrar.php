@@ -2,6 +2,8 @@
 require_once __DIR__ . '/app/classes/Conexao.php';
 session_start();
 
+$id_organizacao = isset($_GET['id_organizacao']) ? $_GET['id_organizacao'] : '';
+
 $conexao = new Conexao();
 
 // if (!isset($_SESSION['id_usuario'])) {
@@ -33,7 +35,7 @@ $mensagem = "Bem vindo!";
 
       <h5 class="mb-3">Cadastrar</h5>
 
-      <form method="post" action="app/gateway.php?acao=cadastrar">
+      <form method="post" action="app/gateway.php?acao=cadastrar&id_organizacao=<?=$id_organizacao?>">
       <div class="mb-3">
               <input type="nome" name="nome" class="form-control" placeholder="Nome" required>
           </div>

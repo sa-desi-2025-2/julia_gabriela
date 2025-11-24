@@ -16,17 +16,23 @@
             $nome  = $_POST['nome'] ?? '';
             $email = $_POST['email'] ?? '';
             $senha = $_POST['senha'] ?? '';
+            $id_organizacao = $_GET['id_organizacao'] ?? '';
             
             if (!empty($nome) && !empty($email) && !empty($senha)) {
                 $usuario = new Usuario();
                 $usuario->setNome($nome);
                 $usuario->setEmail($email);
                 $usuario->setSenha($senha);
-            }
-                if ($usuario->inserir()) {
-                    header("Location: ../Index.php");
 
+                $id_usuario = $usuario->inserir();
+
+                if ($id_organizacao) {
+                    $sub = new Subordinado();
+                    $sub->cadastrar($id_usuario, $id_organizacao);
                 }
+
+                header("Location: ../index.php");
+            }
         }
     }
     if($acao == 'login'){
@@ -41,8 +47,15 @@
                 $usuario->setSenha($senha);
             }
             if ($usuario->login()) {
-                session_start();
-                $_SESSION['email'] = $usuario->getEmail();
+
+                $sub = new Subordinado();
+                $eh_subordinado = $sub->buscarPorIdUsuario($_SESSION['id_usuario']);
+
+                if ($eh_subordinado) {
+                    $_SESSION['eh_subordinado'] = 1;
+                } else {
+                    $_SESSION['eh_subordinado'] = 0;
+                }
 
                 header("Location: ../pages/painel.php");
             }else {
@@ -85,10 +98,7 @@
     
             $cofre = new Cofre();
             $cofre->setNome($nome);
-            echo $nome . ' - ';
-            $cofre->setIdSubordinado($id_usuario);
-            echo $id_usuario;
-            die();
+            $cofre->setIdUsuario($id_usuario);
             if ($cofre->inserir()) {
                 header("Location: ../Pages/CofrePainel.php?sucesso=1");
             } else {
@@ -160,33 +170,6 @@ if ($acao === 'novaOrganizacao') {
 }
 
 if ($acao == 'convite') {
-
-    require_once __DIR__ . '/Classes/Convite.php';
-    $convite = new Convite();
-
-    $link = $convite->enviarConvite($_SESSION['id_usuario']);
-
-    echo $link; // retorna pro JS
-    exit;
+    header("Location: ../cadastrar.php?id_organizacao={$_GET['id_organizacao']}");
 }
-
-    // if ($acao == 'subordinado') {
-    //     $sub = new Subordinado();
-    
-    //     // cadastra subordinado
-    //     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_organizacao'], $_POST['id_usuario'])) {
-    //         $id_organizacao = (int)$_POST['id_organizacao'];
-    //         $id_usuario = (int)$_POST['id_usuario'];
-    
-    //         if ($sub->cadastrar($id_usuario, $id_organizacao)) {
-    //             $_SESSION['msg_sucesso'] = "Subordinado adicionado com sucesso!";
-    //         } else {
-    //             $_SESSION['msg_erro'] = "Erro ao adicionar subordinado.";
-    //         }
-    
-    //         header("Location: ../Pages/OrganizacaoPainel.php");
-    //         exit;
-    //     }
-    // }
-
 ?>

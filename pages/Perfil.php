@@ -37,7 +37,9 @@ $conexao = new Conexao();
           <a href="../App/gateway.php?acao=geradorPainel" class="nav-link">Gerador de senhas</a>
           <a href="../App/gateway.php?acao=CofrePainel" class="nav-link">Cofre</a>
           <a href="../App/gateway.php?acao=perfil" class="nav-link active">Perfil</a>
-          <a href="../App/gateway.php?acao=organizacao" class="nav-link">Organizações</a>
+          <?php if (!$_SESSION['eh_subordinado']) { ?>
+                <a href="../App/gateway.php?acao=organizacao" class="nav-link">Organizações</a>
+            <?php } ?>
           <a href="sair.php" class="nav-link text-danger mt-auto">Logout</a>
       </nav>
   </aside>
@@ -54,10 +56,10 @@ $conexao = new Conexao();
           <p class="text-secondary mb-4">Gerencie suas informações pessoais e credenciais de acesso.</p>
 
           <p class="fw-semibold mb-1">Nome:</p>
-          <p class="text-dark"><?= $nome ?></p>
+          <p class="text-dark"><?= $_SESSION['nome'] ?></p>
 
           <p class="fw-semibold mb-1">Email:</p>
-          <p class="text-dark"><?= $email ?></p>
+          <p class="text-dark"><?= $_SESSION['email'] ?></p>
 
           <div class="d-flex flex-wrap justify-content-center gap-3 mt-4">
               <a href="#modalAlterar" class="btn btn-primary px-4 py-2">

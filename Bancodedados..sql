@@ -30,9 +30,9 @@ CREATE TABLE Subordinado (
 CREATE TABLE Cofre (
     id_cofre INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
-    id_subordinado INT NOT NULL,
+    id_usuario INT NOT NULL,
     data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (id_subordinado) REFERENCES Subordinado(id_subordinado)
+    FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario)
 );
 
 --  organização das senhas

@@ -20,8 +20,8 @@ class Cofre {
     public function getNome() { return $this->nome; }
     public function setNome($nome) { $this->nome = $nome; }
 
-    public function getIdSubordinado() { return $this->idSubordinado; }
-    public function setIdSubordinado($idSubordinado) { $this->idSubordinado = $idSubordinado; }
+    public function getIdUsuario() { return $this->idUsuario; }
+    public function setIdUsuario($idUsuario) { $this->idUsuario = $idUsuario; }
 
     public function getDataCriacao() { return $this->dataCriacao; }
     public function setDataCriacao($dataCriacao) { $this->dataCriacao = $dataCriacao; }
@@ -29,9 +29,9 @@ class Cofre {
     // Criar cofre
     public function inserir() {
         try {
-            $sql = "INSERT INTO Cofre (nome, id_subordinado) VALUES (?, ?)";
+            $sql = "INSERT INTO Cofre (nome, id_usuario) VALUES (?, ?)";
             $stmt = $this->conexao->prepare($sql);
-            return $stmt->execute([$this->nome, $this->idSubordinado]);
+            return $stmt->execute([$this->nome, $this->idUsuario]);
         } catch (PDOException $e) {
             return false;
         }
@@ -72,8 +72,8 @@ class Cofre {
         $sql = "
             SELECT Cofre.id_cofre, Cofre.nome, Cofre.data_criacao
             FROM Cofre
-            INNER JOIN Subordinado ON Subordinado.id_subordinado = Cofre.id_subordinado
-            WHERE Subordinado.id_usuario = ?
+            INNER JOIN Usuario ON Usuario.id_usuario = Cofre.id_usuario
+            WHERE Usuario.id_usuario = ?
         ";
 
         $stmt = $this->conexao->prepare($sql);

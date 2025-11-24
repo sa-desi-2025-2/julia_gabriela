@@ -1,8 +1,18 @@
 <?php
 require_once '../App/Classes/Conexao.php';
+require_once '../App/Classes/Cofre.php';
 session_start();
 
 $conexao = new Conexao();
+
+$cofreClasse = new Cofre();
+$cofres = $cofreClasse->listarPorUsuario($_SESSION["id_usuario"]);
+
+// $pastaClasse = new Pasta();
+// $pastas = $pastasClasse->listarPastas($_SESSION["id_usuario"]);
+
+// $senhaClasse = new Senha();
+// $senhas = $senhaClasse-> ... ($_SESSION["id_usuario"]);
 ?>
 
 <!doctype html>
@@ -30,7 +40,9 @@ $conexao = new Conexao();
             <a href="../App/gateway.php?acao=geradorPainel" class="nav-link">Gerador de senhas</a>
             <a href="../App/gateway.php?acao=CofrePainel" class="nav-link active">Cofre</a>
             <a href="../App/gateway.php?acao=perfil" class="nav-link">Perfil</a>
-            <a href="../App/gateway.php?acao=organizacao" class="nav-link">Organizações</a>
+            <?php if (!$_SESSION['eh_subordinado']) { ?>
+                <a href="../App/gateway.php?acao=organizacao" class="nav-link">Organizações</a>
+            <?php } ?>
             <a href="sair.php" class="nav-link text-danger mt-auto">Logout</a>
         </nav>
     </aside>
@@ -46,15 +58,14 @@ $conexao = new Conexao();
         </div>
 
         <div class="card card-org shadow-sm border-0">
-            <div class="card-body d-flex align-items-center justify-content-between">
-
+          <?php foreach ($cofres as $cofre) { ?>
+              <div class="card-body d-flex align-items-center justify-content-between">
                 <div class="info">
-                    <h5 class="mb-1">Nome do Cofre</h5>
-                    <p class="mb-0 text-muted">Descrição ou informações adicionais</p>
+                    <h5 class="mb-1"><?= $cofre['nome'] ?></h5>
                 </div>
-
                 <a href="#" class="link-convidar">Abrir</a>
-            </div>
+              </div>
+            <?php } ?>
         </div>
 
         <div class="modal fade" id="modalNovoCofre" tabindex="-1">

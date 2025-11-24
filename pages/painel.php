@@ -15,7 +15,7 @@ $stmt = $conn->prepare("
     FROM Senha s
     INNER JOIN Pasta p ON s.id_pasta = p.id_pasta
     INNER JOIN Cofre c ON p.id_cofre = c.id_cofre
-    INNER JOIN Subordinado sub ON c.id_subordinado = sub.id_subordinado
+    INNER JOIN Usuario sub ON c.id_usuario = sub.id_usuario
     WHERE sub.id_usuario = ?
 ");
 $stmt->execute([$_SESSION['id_usuario']]);
@@ -26,7 +26,7 @@ $stmt = $conn->prepare("
     SELECT COUNT(p.id_pasta) AS total_pastas
     FROM Pasta p
     INNER JOIN Cofre c ON p.id_cofre = c.id_cofre
-    INNER JOIN Subordinado sub ON c.id_subordinado = sub.id_subordinado
+    INNER JOIN Usuario sub ON c.id_usuario = sub.id_usuario
     WHERE sub.id_usuario = ?
 ");
 $stmt->execute([$_SESSION['id_usuario']]);
@@ -36,7 +36,7 @@ $total_pastas = $stmt->fetch()['total_pastas'] ?? 0;
 $stmt = $conn->prepare("
     SELECT COUNT(c.id_cofre) AS total_cofres
     FROM Cofre c
-    INNER JOIN Subordinado sub ON c.id_subordinado = sub.id_subordinado
+    INNER JOIN Subordinado sub ON c.id_usuario = sub.id_usuario
     WHERE sub.id_usuario = ?
 ");
 $stmt->execute([$_SESSION['id_usuario']]);
@@ -56,7 +56,7 @@ $total_cofres = $stmt->fetch()['total_cofres'] ?? 0;
 <body>
 
 <div class="d-flex min-vh-100">
-   
+    
     <aside class="sidebar d-flex flex-column p-4 text-white">
         <div class="logo mb-4">
             🔐 <span class="fw-bold">SenhaLock</span>
@@ -66,7 +66,9 @@ $total_cofres = $stmt->fetch()['total_cofres'] ?? 0;
             <a href="../App/gateway.php?acao=geradorPainel" class="nav-link">Gerador de senhas</a>
             <a href="../App/gateway.php?acao=CofrePainel" class="nav-link">Cofre</a>
             <a href="../App/gateway.php?acao=perfil" class="nav-link">Perfil</a>
-            <a href="../App/gateway.php?acao=organizacao" class="nav-link">Organizações</a>
+            <?php if (!$_SESSION['eh_subordinado']) { ?>
+                <a href="../App/gateway.php?acao=organizacao" class="nav-link">Organizações</a>
+            <?php } ?>
             <a href="sair.php" class="nav-link text-danger mt-auto">Logout</a>
         </nav>
     </aside>

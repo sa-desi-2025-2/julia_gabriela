@@ -32,7 +32,7 @@ class Usuario {
             $sql = "INSERT INTO Usuario (nome, email, senha_entrada) VALUES (?, ?, ?)";
             $stmt = $this->conexao->prepare($sql);
             $stmt->execute([$this->nome, $this->email, $hash]);
-            return true;
+            return $this->conexao->lastInsertId();
         } catch (PDOException $e) {
             return false;
         }

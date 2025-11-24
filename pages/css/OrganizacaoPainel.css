@@ -91,6 +91,8 @@ body {
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s ease, transform 0.2s ease;
+  background-color: transparent;
+  border: 0;
 }
 
 .link-convidar:hover {

@@ -1,13 +1,15 @@
 <?php
 require_once '../App/Classes/Conexao.php';
+require_once '../App/Classes/Organizacao.php';
 session_start();
 
-$conexao = new Conexao();
+if (!isset($_SESSION['id_usuario'])) {
+  header("Location: index.php");
+  exit;
+}
 
-// if (!isset($_SESSION['id_usuario'])) {
-//     header("Location: index.php");
-//     exit;
-// }
+$organizacaoClasse = new Organizacao();
+$lista_organizacoes = $organizacaoClasse->listarPorUsuario($_SESSION['id_usuario']);
 ?>
 
 <!doctype html>
@@ -34,7 +36,9 @@ $conexao = new Conexao();
             <a href="../App/gateway.php?acao=geradorPainel" class="nav-link">Gerador de senhas</a>
             <a href="../App/gateway.php?acao=CofrePainel" class="nav-link">Cofre</a>
             <a href="../App/gateway.php?acao=perfil" class="nav-link">Perfil</a>
-            <a href="../App/gateway.php?acao=organizacao" class="nav-link">Organizações</a>
+            <?php if (!$_SESSION['eh_subordinado']) { ?>
+                <a href="../App/gateway.php?acao=organizacao" class="nav-link">Organizações</a>
+            <?php } ?>
             <a href="sair.php" class="nav-link text-danger mt-auto">Logout</a>
         </nav>
     </aside>
@@ -50,16 +54,17 @@ $conexao = new Conexao();
         </div>
 
         <div class="card card-org shadow-sm border-0">
-            <div class="card-body d-flex align-items-center justify-content-between">
+            <?php foreach ($lista_organizacoes as $organizacao) { ?>
+              <div class="card-body d-flex align-items-center justify-content-between">
                 <div class="info">
-                    <h5 class="mb-1">Nome da Organização</h5>
-                    <p class="mb-0 text-muted">Descrição ou informações adicionais</p>
+                    <h5 class="mb-1"><?= $organizacao['nome'] ?></h5>
                 </div>
 
-                <a href="#" class="link-convidar" onclick="copiarLink();">
+                <button data-link="http://localhost:8080/julia_gabriela/App/gateway.php?acao=convite&id_organizacao=<?= $organizacao['id_organizacao'] ?>" class="link-convidar" onclick="copiarLink();">
                     Convidar
-                </a>
-            </div>
+                </button>
+              </div>
+            <?php } ?>
         </div>
 
     </main>

@@ -1,9 +1,12 @@
 function copiarLink() {
-    navigator.clipboard.writeText(link.trim())
+    const botao = event.target; 
+    const link = botao.getAttribute("data-link");
+
+    navigator.clipboard.writeText(link)
         .then(() => {
-            alert("Link copiado:\n" + link.trim());
+            alert("Link copiado!");
         })
-        .catch(() => {
-            alert("Erro ao copiar o link.");
+        .catch(err => {
+            console.error("Erro ao copiar:", err);
         });
 }
