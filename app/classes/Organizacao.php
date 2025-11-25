@@ -8,7 +8,7 @@ class Organizacao {
         $this->conexao = new Conexao();
     }
     
-    /*Cadastra uma nova organização*/
+    //Cadastra uma nova organização
     public function cadastrar($nome, $id_usuario_criador) {
         $stmt = $this->conexao->prepare("
             INSERT INTO Organizacao (nome, id_usuario_criador)
@@ -17,7 +17,7 @@ class Organizacao {
         return $stmt->execute([$nome, $id_usuario_criador]);
     }
 
-    /*Retorna todas as organizações criadas por um usuário*/
+    //Retorna todas as organizações criadas por um usuário
     public function listarPorUsuario($id_usuario_criador) {
         $stmt = $this->conexao->prepare("
             SELECT * FROM Organizacao
@@ -28,7 +28,7 @@ class Organizacao {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    /*Retorna uma organização específica*/
+    //Retorna uma organização específica
     public function buscarPorId($id_organizacao) {
         $stmt = $this->conexao->prepare("
             SELECT o.*, u.nome AS criador
@@ -40,7 +40,7 @@ class Organizacao {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    /*Atualiza o nome da organização*/
+    //Atualiza o nome da organização
     public function atualizarNome($id_organizacao, $novo_nome) {
         $stmt = $this->conexao->prepare("
             UPDATE Organizacao SET nome = ? WHERE id_organizacao = ?
@@ -48,7 +48,7 @@ class Organizacao {
         return $stmt->execute([$novo_nome, $id_organizacao]);
     }
 
-    /*Conta quantos subordinados estão vinculados a uma organização*/
+    //Conta quantos subordinados estão vinculados a uma organização
     public function contarSubordinados($id_organizacao) {
         $stmt = $this->conexao->prepare("
             SELECT COUNT(*) AS total
@@ -60,7 +60,7 @@ class Organizacao {
         return $resultado['total'] ?? 0;
     }
 
-    /*Conta quantos cofres existem dentro da organização*/
+    //Conta quantos cofres existem dentro da organização
     public function contarCofres($id_organizacao) {
         $stmt = $this->conexao->prepare("
             SELECT COUNT(c.id_cofre) AS total
@@ -107,12 +107,5 @@ class Organizacao {
         }
         header("Location: ../pages/painel.php");
         exit;
-
-         /*Exclui uma organização
-    public function excluir($id_organizacao) {
-        $stmt = $this->conexao->prepare("
-            DELETE FROM Organizacao WHERE id_organizacao = ?
-        ");
-        return $stmt->execute([$id_organizacao]); */
 }
 ?>

@@ -26,7 +26,6 @@ CREATE TABLE Subordinado (
     FOREIGN KEY (id_organizacao) REFERENCES Organizacao(id_organizacao)
 );
 
--- onde ficam senhas e pastas
 CREATE TABLE Cofre (
     id_cofre INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
@@ -35,7 +34,6 @@ CREATE TABLE Cofre (
     FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario)
 );
 
---  organização das senhas
 CREATE TABLE Pasta (
     id_pasta INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
@@ -44,7 +42,6 @@ CREATE TABLE Pasta (
     FOREIGN KEY (id_cofre) REFERENCES Cofre(id_cofre)
 );
 
--- gerenciadas dentro das pastas
 CREATE TABLE Senha (
     id_senha INT AUTO_INCREMENT PRIMARY KEY,
     conta VARCHAR(100) NOT NULL,
@@ -56,7 +53,6 @@ CREATE TABLE Senha (
     FOREIGN KEY (id_pasta) REFERENCES Pasta(id_pasta)
 );
 
--- convidar subordinados
 CREATE TABLE Convite (
     id_convite INT AUTO_INCREMENT PRIMARY KEY,
     email_convidado VARCHAR(150) NOT NULL,

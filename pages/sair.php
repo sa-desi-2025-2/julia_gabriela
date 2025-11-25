@@ -25,8 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logout - SenhaLock</title>
-
-    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
@@ -36,7 +34,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
 
 <div class="d-flex min-vh-100 flex-column flex-md-row">
-    <!-- Sidebar -->
     <aside class="sidebar d-flex flex-column p-4 text-white">
         <div class="logo mb-4">
             🔐 <span class="fw-bold">SenhaLock</span>
@@ -52,8 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <a href="sair.php" class="nav-link text-danger mt-auto">Logout</a>
         </nav>
     </aside>
-
-    <!-- Main -->
+    
     <main class="main flex-grow-1 d-flex flex-column justify-content-center align-items-center p-4 bg-light">
         <div class="text-center">
             <h2 class="fw-bold mb-3 text-dark">Logout</h2>

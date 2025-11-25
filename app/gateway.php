@@ -145,11 +145,7 @@ $acao = $_GET['acao'] ?? '';
 
 if ($acao === 'novaOrganizacao') {
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        // if (!isset($_SESSION['id_usuario'])) {
-        //     header("Location: ../index.php");
-        //     exit;
-        // }
+    if ($_SERVER['REQUEST_METHOD'] === 'POST')
         $nome = trim($_POST['nome_organizacao']);
         session_start();
         $id_usuario = $_SESSION['id_usuario'];
@@ -167,7 +163,6 @@ if ($acao === 'novaOrganizacao') {
 
         exit;
     }
-}
 
 if ($acao == 'convite') {
     header("Location: ../cadastrar.php?id_organizacao={$_GET['id_organizacao']}");

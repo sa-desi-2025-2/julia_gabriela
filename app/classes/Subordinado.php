@@ -8,7 +8,7 @@ class Subordinado {
         $this->conexao = new Conexao();
      }
 
-    /*Cadastra um subordinado vinculado a uma organização*/
+    //Cadastra um subordinado vinculado a uma organização
     public function cadastrar($id_usuario, $id_organizacao, $ativo = true) {
         $stmt = $this->conexao->prepare("
             INSERT INTO Subordinado (id_usuario, id_organizacao, ativo)
@@ -17,7 +17,7 @@ class Subordinado {
         return $stmt->execute([$id_usuario, $id_organizacao, $ativo]);
     }
 
-    /* Retorna todos os subordinados de uma organização*/
+    // Retorna todos os subordinados de uma organização
     public function listarPorOrganizacao($id_organizacao) {
         $stmt = $this->conexao->prepare("
             SELECT s.*, u.nome, u.email 
@@ -29,7 +29,7 @@ class Subordinado {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    /*Retorna todos os subordinados vinculados a um usuário*/
+    //Retorna todos os subordinados vinculados a um usuário
     public function listarPorUsuario($id_usuario) {
         $stmt = $this->conexao->prepare("
             SELECT s.*, o.nome AS organizacao
@@ -41,7 +41,7 @@ class Subordinado {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    /*Busca um subordinado específico (por id)*/
+    //Busca um subordinado específico (por id)
     public function buscarPorId($id_subordinado) {
         $stmt = $this->conexao->prepare("
             SELECT * FROM Subordinado WHERE id_subordinado = ?
@@ -50,7 +50,7 @@ class Subordinado {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    /*Busca um subordinado por id_usuario*/
+    //Busca um subordinado por id_usuario
     public function buscarPorIdUsuario($id_usuario) {
         $stmt = $this->conexao->prepare("
             SELECT * FROM Subordinado WHERE id_usuario = ?
@@ -59,7 +59,7 @@ class Subordinado {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    /*Verifica se um subordinado está ativo*/
+    //Verifica se um subordinado está ativo
     public function estaAtivo($id_usuario, $id_organizacao) {
         $stmt = $this->conexao->prepare("
             SELECT ativo FROM Subordinado
@@ -70,7 +70,7 @@ class Subordinado {
         return $resultado ? (bool)$resultado['ativo'] : false;
     }
 
-    /*Desativa ou reativa um subordinado*/
+    //Desativa ou reativa um subordinado
     public function alterarStatus($id_subordinado, $ativo) {
         $stmt = $this->conexao->prepare("
             UPDATE Subordinado SET ativo = ? WHERE id_subordinado = ?

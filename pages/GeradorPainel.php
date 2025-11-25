@@ -25,8 +25,6 @@ $conn = new Conexao();
 
 <body>
 <div class="d-flex min-vh-100">
-
-    <!-- SIDEBAR -->
     <aside class="sidebar d-flex flex-column p-4 text-white">
         <div class="logo mb-4">🔐 <span class="fw-bold">SenhaLock</span></div>
 
@@ -41,17 +39,11 @@ $conn = new Conexao();
             <a href="../Pages/sair.php" class="nav-link text-danger mt-auto">Logout</a>
         </nav>
     </aside>
-
-    <!-- CONTEÚDO -->
     <main class="content flex-grow-1 p-5 bg-light d-flex justify-content-between align-items-start">
-
-        <!-- Texto -->
         <div class="texto">
             <h1>Crie <br><strong>Senhas<br>Rapidamente.</strong></h1>
             <p class="text-muted">Gere combinações fortes e aleatórias para proteger suas contas.</p>
         </div>
-
-        <!-- Card Gerador -->
         <div class="gerador-card">
             <h5>Crie uma nova senha</h5>
             <p class="text-muted">Personalize sua nova senha</p>

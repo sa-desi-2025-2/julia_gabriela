@@ -16,8 +16,6 @@ $conexao = new Conexao();
   <meta charset="utf-8">
   <title>Meu Perfil - SenhaLock</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
@@ -27,7 +25,6 @@ $conexao = new Conexao();
 <body>
 
 <div class="d-flex min-vh-100 flex-column flex-md-row">
-  <!-- Sidebar -->
   <aside class="sidebar d-flex flex-column p-4 text-white">
       <div class="logo mb-4">
           🔐 <span class="fw-bold">SenhaLock</span>
@@ -43,8 +40,6 @@ $conexao = new Conexao();
           <a href="sair.php" class="nav-link text-danger mt-auto">Logout</a>
       </nav>
   </aside>
-
-  <!-- Main -->
   <main class="main flex-grow-1 d-flex flex-column justify-content-center align-items-center p-4 bg-light">
       <div class="perfil-container text-center bg-white shadow-sm p-5 rounded-4" style="max-width: 600px;">
 
@@ -75,9 +70,7 @@ $conexao = new Conexao();
   </main>
 </div>
 
-<!-- ==========================
-        MODAL ALTERAR
-=========================== -->
+
 <div id="modalAlterar" class="modal">
   <div class="modal-content">
       <h3 class="mb-4">Alterar Informações</h3>
@@ -102,9 +95,6 @@ $conexao = new Conexao();
   </div>
 </div>
 
-<!-- ==========================
-        MODAL EXCLUIR
-=========================== -->
 <div id="modalExcluir" class="modal">
   <div class="modal-content">
       <h3 class="mb-3 text-danger">Excluir Conta</h3>

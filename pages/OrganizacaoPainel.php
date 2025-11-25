@@ -70,8 +70,6 @@ $lista_organizacoes = $organizacaoClasse->listarPorUsuario($_SESSION['id_usuario
     </main>
 </div>
 
-
-<!-- Modal Nova Organização -->
 <div class="modal fade" id="modalNovaOrganizacao" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
